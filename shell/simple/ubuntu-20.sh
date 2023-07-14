@@ -1,8 +1,8 @@
 #!/bin/bash
 
-hostnamectl set-hostname ubuntu-20
+hostnamectl set-hostname ${domain}
 
-touch /tmp/ubuntu-20
+touch /tmp/${domain}
 
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 

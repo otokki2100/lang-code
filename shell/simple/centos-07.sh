@@ -1,8 +1,8 @@
 #!/bin/bash
 
-hostnamectl set-hostname centos-07
+hostnamectl set-hostname ${domain}
 
-touch /tmp/centos-07
+touch /tmp/${domain}
 
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 

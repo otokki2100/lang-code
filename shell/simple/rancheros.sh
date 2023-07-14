@@ -1,5 +1,5 @@
 #!/bin/bash
 
-touch /tmp/rancheros
+touch /tmp/${domain}
 
 echo "rancher:password" | chpasswd

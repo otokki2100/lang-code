@@ -1,8 +1,8 @@
 #!/bin/bash
 
-hostnamectl set-hostname debian-11
+hostnamectl set-hostname ${domain}
 
-touch /tmp/debian-11
+touch /tmp/${domain}
 
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 

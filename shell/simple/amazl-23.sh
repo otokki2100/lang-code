@@ -1,8 +1,8 @@
 #!/bin/bash
 
-hostnamectl set-hostname amazl-23
+hostnamectl set-hostname ${domain}
 
-touch /tmp/amazl-23
+touch /tmp/${domain}
 
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
