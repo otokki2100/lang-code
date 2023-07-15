@@ -6,6 +6,6 @@ touch /tmp/${domain}
 
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
-echo "centos:password" | chpasswd
+echo "${user}:password" | chpasswd
 
 systemctl restart sshd
