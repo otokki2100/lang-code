@@ -14,4 +14,4 @@ RUN curl -L https://releases.hashicorp.com/terraform/1.5.1/terraform_1.5.1_linux
 
 RUN git clone https://github.com/otokki2100/cloud-aws.git /cloud-aws
 
-WORKDIR /cloud-aws/terraform
+WORKDIR /cloud-aws
