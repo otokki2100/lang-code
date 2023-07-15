@@ -12,6 +12,6 @@ RUN curl -L https://releases.hashicorp.com/terraform/1.5.1/terraform_1.5.1_linux
   && unzip /tmp/terraform.zip \
   && mv terraform /usr/local/bin/
 
-RUN git clone https://github.com/otokki2100/cloud-aws-ec2.git /cloud-aws-ec2
+RUN git clone https://github.com/otokki2100/cloud-aws.git /cloud-aws
 
-WORKDIR /cloud-aws-ec2/terraform
+WORKDIR /cloud-aws/terraform
