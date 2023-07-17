@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.local/bin:/usr/local/bin"
 
 RUN apt update \
-  && apt-get install -y curl unzip git python3 python3-pip \
+  && apt-get install -y curl rsync unzip git python3 python3-pip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 RUN python3 -m pip install --user ansible
