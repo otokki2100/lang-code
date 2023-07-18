@@ -25,6 +25,11 @@ sudo a2ensite test2.otokki.com
 
 sudo systemctl reload apache2
 
-sudo mkdir /var/www/html/{test1,test2}
+sudo mkdir -p /var/www/html/test1
+sudo mkdir -p /var/www/html/test2
+
 echo test1 | sudo tee /var/www/html/test1/index.html
 echo test2 | sudo tee /var/www/html/test2/index.html
+
+curl --resolve test1.otokki.com:80:127.0.0.1 http://test1.otokki.com
+curl --resolve test2.otokki.com:80:127.0.0.1 http://test2.otokki.com
