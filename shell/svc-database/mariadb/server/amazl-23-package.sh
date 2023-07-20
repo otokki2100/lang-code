@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo dnf install -y mariadb105-server
+sudo dnf -y install mariadb105-server
 
 sudo systemctl enable --now mariadb
 

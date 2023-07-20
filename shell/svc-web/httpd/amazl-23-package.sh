@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo dnf install -y httpd
+sudo dnf -y install httpd
 
 sudo systemctl enable --now httpd
 

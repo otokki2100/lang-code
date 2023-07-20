@@ -2,7 +2,7 @@
 
 sudo apt update
 
-sudo apt install -y apache2
+sudo apt -y install apache2
 
 sudo systemctl enable --now apache2
 

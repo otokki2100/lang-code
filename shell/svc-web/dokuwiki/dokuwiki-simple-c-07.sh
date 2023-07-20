@@ -4,16 +4,16 @@ echo ${domain} | tee /tmp/domain
 
 sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
-sudo yum install -y httpd
+sudo yum -y install httpd
 
-sudo yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-sudo yum install -y epel-release
-sudo yum install -y yum-utils
+sudo yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo yum -y install epel-release
+sudo yum -y install yum-utils
 sudo yum-config-manager --disable remi-php54
 sudo yum-config-manager --enable remi-php74
 sudo yum clean all
 sudo yum makecache fast
-sudo yum install -y php php-{cli,common,gd,mbstring,mysqlnd,xml}
+sudo yum -y install php php-{cli,common,gd,mbstring,mysqlnd,xml}
 
 php -v
 
