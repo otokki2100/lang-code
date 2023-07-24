@@ -6,8 +6,7 @@ EOF
 source /etc/profile.d/custom.sh
 
 sudo yum -y install git gcc gcc-c++ make libtool autoconf expat-devel libxml2-devel perl-devel
-
-#    lynx  
+## install the basic library packages required for compile
 
 git clone -b 2.4.57 https://github.com/apache/httpd.git /tmp/httpd
 
