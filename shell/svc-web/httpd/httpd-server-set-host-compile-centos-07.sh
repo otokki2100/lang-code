@@ -26,13 +26,13 @@ echo $?
 
 sudo mkdir /usr/local/apache2/conf.d/
 sudo touch /usr/local/apache2/conf.d/custom.conf
-echo "Include conf.d/*.conf" | sudo tee -a /usr/local/apache2/conf/httpd.conf
+echo "IncludeOptional conf.d/*.conf" | sudo tee -a /usr/local/apache2/conf/httpd.conf
 
 sudo sed -i "s/Listen 80/Listen 8080/g" /usr/local/apache2/conf/httpd.conf
 
 sudo chown -R daemon.daemon /usr/local/apache2
 
-sudo -u daemon apachectl start
+sudo -u daemon /usr/local/apache2/bin/apachectl start
 apachectl -V
 
 curl http://127.0.0.1:8080
