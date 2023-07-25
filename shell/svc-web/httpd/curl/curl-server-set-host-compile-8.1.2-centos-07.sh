@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo yum -y install gcc
+
 curl -L https://github.com/curl/curl/releases/download/curl-8_1_2/curl-8.1.2.tar.gz -o /tmp/curl.tar.gz
 
 tar xvzf /tmp/curl.tar.gz -C /tmp/
