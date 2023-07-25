@@ -30,9 +30,9 @@ echo "IncludeOptional conf.d/*.conf" | sudo tee -a /usr/local/apache2/conf/httpd
 
 sudo sed -i "s/Listen 80/Listen 8080/g" /usr/local/apache2/conf/httpd.conf
 
-sudo chown -R daemon.daemon /usr/local/apache2
+sudo chown -R apache.apache /usr/local/apache2
 
-sudo -u daemon /usr/local/apache2/bin/apachectl start
+sudo -u apache /usr/local/apache2/bin/apachectl start
 apachectl -V
 
 curl http://127.0.0.1:8080

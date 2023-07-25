@@ -9,7 +9,7 @@ cat << EOF | sudo tee /usr/local/apache2/conf.d/mod_status.conf
 </Location>
 EOF
 
-sudo -u daemon /usr/local/apache2/bin/apachectl restart
+sudo -u apache /usr/local/apache2/bin/apachectl restart
 
 curl http://127.0.0.1:8080/server-status
 # lynx http://127.0.0.1:8080/server-status
