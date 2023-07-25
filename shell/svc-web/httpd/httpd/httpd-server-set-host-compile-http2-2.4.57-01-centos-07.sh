@@ -47,8 +47,6 @@ apachectl -V
 
 curl -k -I --http2 http://127.0.0.1:8080
 
-curl http://127.0.0.1:8080
-
 apachectl -D DUMP_MODULES | grep -E "http2|ssl"
 
 ldd /usr/local/apache2/modules/mod_ssl.so
