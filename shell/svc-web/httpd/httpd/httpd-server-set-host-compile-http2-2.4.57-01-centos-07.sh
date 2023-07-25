@@ -45,7 +45,7 @@ sudo chown -R daemon.daemon /usr/local/apache2
 sudo -u daemon /usr/local/apache2/bin/apachectl start
 apachectl -V
 
-curl -k -I --http2 http://127.0.0.1:8080
+/usr/local/curl/bin/curl -k -I --http2 http://127.0.0.1:8080
 
 apachectl -D DUMP_MODULES | grep -E "http2|ssl"
 
