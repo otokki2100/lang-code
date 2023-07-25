@@ -10,13 +10,17 @@ sudo yum -y install git gcc gcc-c++ make libtool autoconf expat-devel libxml2-de
 
 git clone -b 2.4.57 https://github.com/apache/httpd.git /tmp/httpd
 
+cp -r /tmp/apr /tmp/httpd/srclib/apr
+cp -r /tmp/apr-util /tmp/httpd/srclib/apr-util
+## prefer not to use the system-provided versions
+
 cd /tmp/httpd/
 
 sed -i "s/-ldl/-ldl -lexpat/g" /tmp/httpd/build/config_vars.mk
 
 ./buildconf
 
-./configure --prefix=/usr/local/apache2 --enable-so --enable-mods-shared=most
+./configure --prefix=/usr/local/apache2 --enable-so --with-included-apr --enable-mods-shared=most
 make -j$(nproc) && sudo make install
 echo $?
 
