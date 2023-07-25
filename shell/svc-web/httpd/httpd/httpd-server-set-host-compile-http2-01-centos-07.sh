@@ -20,7 +20,7 @@ sed -i "s/-ldl/-ldl -lexpat/g" /tmp/httpd/build/config_vars.mk
 
 ./buildconf
 
-./configure --prefix=/usr/local/apache2 --enable-so --with-included-apr --with-pcre=/usr/local/pcre2/bin/pcre2-config --enable-mods-shared=most --enable-http2 --with-nghttp2=/usr/local
+./configure --prefix=/usr/local/apache2 --enable-so --with-included-apr --with-pcre=/usr/local/pcre2/bin/pcre2-config --enable-mods-shared=most --enable-http2 --with-nghttp2=/usr/local/nghttp2
 make -j$(nproc) && sudo make install
 echo $?
 
