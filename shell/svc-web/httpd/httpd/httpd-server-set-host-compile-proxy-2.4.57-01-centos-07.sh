@@ -30,9 +30,10 @@ echo "IncludeOptional conf.d/*.conf" | sudo tee -a /usr/local/apache2/conf/httpd
 
 sudo sed -i "s/Listen 80/Listen 8080/g" /usr/local/apache2/conf/httpd.conf
 
-
-
-
+cat << EOF | sudo tee /usr/local/apache2/conf.d/proxy.conf
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+EOF
 
 sudo chown -R daemon.daemon /usr/local/apache2
 
