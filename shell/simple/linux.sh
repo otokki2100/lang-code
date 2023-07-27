@@ -1,12 +1,14 @@
 #!/bin/bash
 
-hostnamectl set-hostname ${domain}
+sudo hostnamectl set-hostname ${domain}
 
-touch /tmp/${domain}
+sudo touch /tmp/${domain}
 
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
-echo "${user}:password" | chpasswd
-echo "root:password" | chpasswd
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
-systemctl restart sshd
+echo "${user}:password" | sudo chpasswd
+echo "root:password" | sudo chpasswd
+
+sudo systemctl restart sshd
