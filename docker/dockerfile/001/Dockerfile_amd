@@ -21,4 +21,3 @@ RUN git clone https://github.com/otokki2100/cloud-aws.git /home/admin-mgmt/all/w
 RUN git clone https://github.com/otokki2100/lang-code.git /home/admin-mgmt/all/wiki/code/lang-code
 
 WORKDIR /home/admin-mgmt
-
