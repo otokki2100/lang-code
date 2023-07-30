@@ -12,6 +12,8 @@ RUN curl -L https://releases.hashicorp.com/terraform/1.5.1/terraform_1.5.1_linux
   && unzip /tmp/terraform.zip \
   && mv terraform /usr/local/bin/
 
+USER admin-mgmt
+
 RUN useradd -m -s /bin/bash admin-mgmt
 
 RUN git clone https://github.com/otokki2100/cloud-aws.git /home/admin-mgmt/wiki/code/cloud-aws
