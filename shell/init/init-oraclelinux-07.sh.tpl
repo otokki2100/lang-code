@@ -2,7 +2,7 @@
 
 sudo hostnamectl set-hostname ${domain}
 
-sudo touch /tmp/${domain}
+sudo touch /tmp/${dist}
 
 sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
@@ -12,3 +12,5 @@ echo "${user}:password" | sudo chpasswd
 echo "root:password" | sudo chpasswd
 
 sudo systemctl restart sshd
+
+sudo yum -y install git

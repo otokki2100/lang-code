@@ -1,5 +1,9 @@
 #!/bin/bash
 
+user=$1
+dist=$2
+domain=$3
+
 sudo hostnamectl set-hostname ${domain}
 
 sudo touch /tmp/${dist}

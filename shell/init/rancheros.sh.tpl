@@ -1,6 +1,6 @@
 #!/bin/bash
 
-touch /tmp/${domain}
+sudo touch /tmp/${dist}
 
 echo "rancher:password" | chpasswd
 echo "root:password" | chpasswd

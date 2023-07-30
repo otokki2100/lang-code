@@ -1,5 +1,9 @@
 #!/bin/bash
 
+user=$1
+dist=$2
+domain=$3
+
 sudo hostnamectl set-hostname ${domain}
 
 sudo touch /tmp/${dist}
@@ -13,4 +17,4 @@ echo "root:password" | sudo chpasswd
 
 sudo systemctl restart sshd
 
-sudo dnf -y install git
+sudo yum -y install git
