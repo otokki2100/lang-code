@@ -18,17 +18,17 @@ sudo yum -y install php php-{cli,common,gd,mbstring,mysqlnd,xml}
 php -v
 
 curl -L https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz -o dokuwiki-stable.tgz
-sudo mkdir -p /var/www/html/dokuwiki/
-sudo tar xvzf dokuwiki-stable.tgz -C /var/www/html/dokuwiki --strip-components=1
+sudo mkdir -p /var/www/html/
+sudo tar xvzf dokuwiki-stable.tgz -C /var/www/html --strip-components=1
 
-sudo cp /var/www/html/dokuwiki/.htaccess.dist /var/www/html/dokuwiki/.htaccess
+sudo cp /var/www/html/.htaccess.dist /var/www/html/.htaccess
 
 cat << EOF | sudo tee /etc/httpd/conf.d/dokuwiki.conf
 <Virtualhost *:80>
   ServerName ${domain}
-  DocumentRoot /var/www/html/dokuwiki
+  DocumentRoot /var/www/html
 
-  <Directory "/var/www/html/dokuwiki">
+  <Directory "/var/www/html">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride All
     Require all granted
@@ -40,7 +40,7 @@ cat << EOF | sudo tee /etc/httpd/conf.d/dokuwiki.conf
 </Virtualhost>
 EOF
 
-sudo chown -R apache:apache /var/www/html/dokuwiki
+sudo chown -R apache:apache /var/www/html
 
 sudo systemctl enable --now httpd
 
