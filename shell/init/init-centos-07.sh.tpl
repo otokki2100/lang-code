@@ -13,4 +13,9 @@ echo "root:password" | sudo chpasswd
 
 sudo systemctl restart sshd
 
+cat << EOF | sudo tee /etc/environment
+LANG=en_US.utf-8
+LC_ALL=en_US.utf-8
+EOF
+
 sudo yum -y install git
