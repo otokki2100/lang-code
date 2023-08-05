@@ -45,5 +45,3 @@ EOF
 sudo chown -R apache:apache /var/www/html
 
 sudo systemctl enable --now httpd
-
-sudo reboot
