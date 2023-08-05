@@ -2,8 +2,6 @@
 
 echo ${domain} | tee /tmp/domain
 
-sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
-
 sudo yum -y install httpd
 
 sudo yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
