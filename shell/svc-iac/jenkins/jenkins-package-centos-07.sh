@@ -17,4 +17,3 @@ sudo yum -y install jenkins
 
 sudo systemctl enable --now jenkins
 # sudo cat /lib/systemd/system/jenkins.service
-

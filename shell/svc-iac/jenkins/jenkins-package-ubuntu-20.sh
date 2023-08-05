@@ -26,4 +26,3 @@ sudo systemctl enable --now jenkins
 
 # sudo ufw allow 8080
 # sudo ufw status
-
