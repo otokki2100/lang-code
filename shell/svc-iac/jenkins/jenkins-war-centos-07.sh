@@ -7,16 +7,22 @@ domain=$3
 echo ${domain} | tee /tmp/domain
 
 # java
-yum install -y java-11-openjdk-devel
+sudo yum install -y java-1.8.0-openjdk-devel java-11-openjdk-devel
+
+sudo alternatives --set java java-11-openjdk.x86_64
+sudo alternatives --set javac java-11-openjdk.x86_64
+
+java -version
+javac -version
 
 # tomcat
-curl -L https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz -o /tmp/apache-tomcat.tar.gz
+curl -L https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz -o /tmp/apache-tomcat.tar.gz
 
 tar xvzf /tmp/apache-tomcat.tar.gz -C /tmp/
 
-mv /tmp/apache-tomcat-9.0.71 /usr/local/apache-tomcat
+sudo mv /tmp/apache-tomcat-9.0.78 /usr/local/apache-tomcat
 
-cat << EOF | tee /etc/systemd/system/tomcat.service
+cat << EOF | sudo tee /etc/systemd/system/tomcat.service
 [Unit]
 Description=Tomcat instance
 After=syslog.target network.target
@@ -27,7 +33,7 @@ Type=forking
 User=root
 Group=root
 
-Environment=JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.17.0.8-2.el7_9.x86_64
+Environment=JAVA_HOME=/usr/lib/jvm/java
 
 Environment=CATALINA_PID=/usr/local/apache-tomcat/logs/catalina.pid
 Environment=CATALINA_BASE=/usr/local/apache-tomcat
@@ -40,12 +46,16 @@ ExecStop=/usr/local/apache-tomcat/bin/shutdown.sh
 WantedBy=multi-user.target
 EOF
 
+# service
+sudo systemctl daemon-reload
+sudo systemctl enable --now tomcat
+
 # jenkins
 curl -L https://get.jenkins.io/war-stable/2.375.1/jenkins.war -o /tmp/jenkins.war
 
-cp /tmp/jenkins.war /usr/local/apache-tomcat/webapps/
+sudo cp /tmp/jenkins.war /usr/local/apache-tomcat/webapps/
 
-cat << EOF | tee /usr/local/apache-tomcat/bin/setenv.sh
+cat << EOF | sudo tee /usr/local/apache-tomcat/bin/setenv.sh
 CATALINA_OPTS="-DJENKINS_HOME=\$CATALINA_BASE/webapps/jenkins"
 EOF
 
@@ -71,9 +81,7 @@ java -jar /tmp/jenkins-plugin-manager-2.12.9.jar \
     --jenkins-update-center https://updates.jenkins.io/update-center.json
 
 
-mv /tmp/plugins/*.jpi /usr/local/apache-tomcat/webapps/jenkins/plugins/
+sudo mv /tmp/plugins/*.jpi /usr/local/apache-tomcat/webapps/jenkins/plugins/
 
-# service
-systemctl daemon-reload
-systemctl enable --now tomcat
-systemctl restart tomcat
+sudo systemctl restart tomcat
+sudo systemctl status tomcat
