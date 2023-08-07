@@ -21,5 +21,9 @@ USER admin-mgmt
 
 RUN git clone https://github.com/otokki2100/cloud-aws.git /home/admin-mgmt/all/wiki/code/cloud-aws
 RUN git clone https://github.com/otokki2100/lang-code.git /home/admin-mgmt/all/wiki/code/lang-code
+RUN git clone https://github.com/otokki2100/svc-iac.git /home/admin-mgmt/all/wiki/code/svc-iac
+RUN git clone https://github.com/otokki2100/svc-web.git /home/admin-mgmt/all/wiki/code/svc-web
+RUN git clone https://github.com/otokki2100/svc-conn.git /home/admin-mgmt/all/wiki/code/svc-conn
+RUN git clone https://github.com/otokki2100/svc-repo.git /home/admin-mgmt/all/wiki/code/svc-repo
 
 WORKDIR /home/admin-mgmt
