@@ -2,7 +2,7 @@
 
 sudo yum install -y java-1.8.0-openjdk
 
-curl -L https://download.sonatype.com/nexus/3/nexus-3.53.1-02-unix.tar.gz -o nexus.tar.gz
+curl -L https://download.sonatype.com/nexus/3/nexus-3.58.1-02-unix.tar.gz -o nexus.tar.gz
 
 sudo tar -xvzf nexus.tar.gz -C /opt/
 sudo mv /opt/nexus-* /opt/nexus
