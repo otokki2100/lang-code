@@ -13,3 +13,5 @@ no_proxy=127.0.0.1,localhost,10.0.101.11
 
 export http_proxy https_proxy no_proxy
 EOF
+
+source /etc/profile.d/custom.sh
