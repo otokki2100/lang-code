@@ -36,3 +36,11 @@ java -version
 curl -L https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz -o apache-maven-bin.tar.gz
 
 sudo tar xvzf apache-maven-bin.tar.gz -C /usr/local/
+
+sudo mv /usr/local/apache-maven-* /usr/local/apache-maven
+
+cat << EOF | sudo tee /etc/profile.d/maven.sh
+export PATH=\$PATH:/usr/local/apache-maven/bin
+EOF
+
+source /etc/profile.d/maven.sh
