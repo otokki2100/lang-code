@@ -32,3 +32,42 @@ EOF
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now nexus
+
+echo -n 'admin:password' | base64
+
+# yum-c07-default-base
+curl -X 'POST' \
+  'http://127.0.0.1:8081/service/rest/v1/repositories/yum/proxy' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' \
+  -d '{
+  "name": "yum-c07-default-base",
+  "online": true,
+  "storage": {
+    "blobStoreName": "default",
+    "strictContentTypeValidation": true
+  },
+  "proxy": {
+    "remoteUrl": "http://mirror.centos.org/centos/7/os/x86_64/",
+    "contentMaxAge": 1440,
+    "metadataMaxAge": 1440
+  },
+  "negativeCache": {
+    "enabled": true,
+    "timeToLive": 1440
+  },
+  "httpClient": {
+    "blocked": false,
+    "autoBlock": true
+  }
+}'
+
+
+
+
+
+
+
+
+
